@@ -7,11 +7,11 @@ import jakarta.persistence.Table;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.util.List;
 
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -28,4 +28,6 @@ public class Category extends AbstractEntity {
     @OneToMany(mappedBy ="category" )
     private List<Article> articles ;
 
+
 }
+

@@ -3,13 +3,11 @@ package com.chabbah.gestiondestock.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -28,5 +26,5 @@ public class CommandeClient extends AbstractEntity {
     private Client client;
 
     @OneToMany(mappedBy = "commandeClient")
-    private List<LignCommandeClient> ligneCommandeClients;
+    private List<LigneCommandeClient> ligneCommandeClients;
 }

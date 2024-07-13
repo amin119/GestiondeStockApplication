@@ -6,7 +6,6 @@ import lombok.*;
 import javax.management.relation.Role;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -14,7 +13,7 @@ import javax.management.relation.Role;
 @Table(name = "roles")
 public class Roles extends AbstractEntity{
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "rolename")
     private String rolename;
 
     @ManyToOne
