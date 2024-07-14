@@ -44,6 +44,7 @@ public class EntrepriseDto {
                 .nom(entreprise.getNom())
                 .description(entreprise.getDescription())
                 .codeFiscal(entreprise.getCodeFiscal())
+                .adresse(AdresseDto.fromEntity(entreprise.getAdresse()))
                 .photo(entreprise.getPhoto())
                 .email(entreprise.getEmail())
                 .telephone(entreprise.getTelephone())
@@ -61,6 +62,7 @@ public class EntrepriseDto {
         entreprise.setId(entrepriseDto.getId());
         entreprise.setNom(entrepriseDto.getNom());
         entreprise.setDescription(entrepriseDto.getDescription());
+        entreprise.setAdresse(AdresseDto.toEntity(entrepriseDto.getAdresse()));
         entreprise.setCodeFiscal(entrepriseDto.getCodeFiscal());
         entreprise.setPhoto(entrepriseDto.getPhoto());
         entreprise.setEmail(entrepriseDto.getEmail());

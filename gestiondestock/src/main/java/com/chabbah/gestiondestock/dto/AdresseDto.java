@@ -18,7 +18,7 @@ public class AdresseDto {
 
     private String city;
 
-    public AdresseDto fromEntity(Adresse adresse) {
+    public static AdresseDto fromEntity(Adresse adresse) {
 
       if (adresse == null) {
           return null;
@@ -32,7 +32,7 @@ public class AdresseDto {
               .build();
     }
 
-    public Adresse toEntity(AdresseDto adresseDto) {
+    public static Adresse toEntity(AdresseDto adresseDto) {
 
         if (adresseDto == null) {
             return null;

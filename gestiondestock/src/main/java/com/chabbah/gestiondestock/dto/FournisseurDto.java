@@ -29,7 +29,7 @@ public class FournisseurDto {
     @JsonIgnore
     private List<CommandeFournisseurDto> commandeFournisseurs;
 
-    public FournisseurDto fromEntity(Fournisseur fournisseur) {
+    public static FournisseurDto fromEntity(Fournisseur fournisseur) {
 
         if (fournisseur == null) {
             return null;
@@ -39,11 +39,28 @@ public class FournisseurDto {
                 .id(fournisseur.getId())
                 .nom(fournisseur.getNom())
                 .prenom(fournisseur.getPrenom())
-
+                .adresse(AdresseDto.fromEntity(fournisseur.getAdresse()))
                 .photo(fournisseur.getPhoto())
                 .email(fournisseur.getEmail())
                 .telephone(fournisseur.getTelephone())
                 .build();
 
+    }
+
+    public static Fournisseur toEntity(FournisseurDto fournisseurDto) {
+        if (fournisseurDto == null) {
+            return null;
+        }
+
+        Fournisseur fournisseur = new Fournisseur();
+        fournisseur.setId(fournisseurDto.getId());
+        fournisseur.setNom(fournisseurDto.getNom());
+        fournisseur.setPrenom(fournisseurDto.getNom());
+        fournisseur.setAdresse(AdresseDto.toEntity(fournisseurDto.getAdresse()));
+        fournisseur.setPhoto(fournisseurDto.getPhoto());
+        fournisseur.setEmail(fournisseurDto.getEmail());
+        fournisseur.setTelephone(fournisseurDto.getTelephone());
+
+        return fournisseur;
     }
 }

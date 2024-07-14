@@ -2,7 +2,7 @@ package com.chabbah.gestiondestock.dto;
 
 
 
-import com.chabbah.gestiondestock.model.LigneCommandeClient;
+import com.chabbah.gestiondestock.model.CommandeFournisseur;
 import com.chabbah.gestiondestock.model.LigneCommandeFournisseur;
 import lombok.Builder;
 import lombok.Data;
@@ -23,16 +23,18 @@ public class LigneCommandeFournisseurDto {
 
     private BigDecimal prixUnitaire;
 
-    public LigneCommandeClientDto fromEntity(LigneCommandeClient ligneCommandeClient) {
+    public LigneCommandeFournisseurDto fromEntity(LigneCommandeFournisseur ligneCommandeFournisseur) {
 
-        if (ligneCommandeClient == null) {
+        if (ligneCommandeFournisseur == null) {
             return null;
         }
 
-        return LigneCommandeClientDto.builder()
-                .id(ligneCommandeClient.getId())
-                .quantity(ligneCommandeClient.getQuantity())
-                .prixUnitaire(ligneCommandeClient.getPrixUnitaire())
+        return LigneCommandeFournisseurDto.builder()
+                .id(ligneCommandeFournisseur.getId())
+                .article(ArticleDto.fromEntity(ligneCommandeFournisseur.getArticle()))
+                .commandeFournisseur(CommandeFournisseurDto.fromEntity(ligneCommandeFournisseur.getCommandeFournisseur()))
+                .quantity(ligneCommandeFournisseur.getQuantity())
+                .prixUnitaire(ligneCommandeFournisseur.getPrixUnitaire())
                 .build();
 
     }
@@ -44,6 +46,8 @@ public class LigneCommandeFournisseurDto {
 
         LigneCommandeFournisseur ligneCommandeFournisseur = new LigneCommandeFournisseur();
         ligneCommandeFournisseur.setId(ligneCommandeFournisseurDto.getId());
+        ligneCommandeFournisseur.setArticle(ArticleDto.toEntity(ligneCommandeFournisseurDto.getArticle()));
+        ligneCommandeFournisseur.setCommandeFournisseur(CommandeFournisseurDto.toEntity(ligneCommandeFournisseurDto.getCommandeFournisseur()));
         ligneCommandeFournisseur.setQuantity(ligneCommandeFournisseurDto.getQuantity());
         ligneCommandeFournisseur.setPrixUnitaire(ligneCommandeFournisseurDto.getPrixUnitaire());
 
